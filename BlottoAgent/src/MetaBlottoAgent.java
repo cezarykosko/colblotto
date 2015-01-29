@@ -6,17 +6,11 @@ import java.util.Vector;
 
 import jade.content.ContentElementList;
 import jade.content.onto.basic.Action;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
-import jade.domain.FIPANames;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
-import jade.proto.ContractNetResponder;
 
 @SuppressWarnings("serial")
 public abstract class MetaBlottoAgent extends Agent{
@@ -61,30 +55,11 @@ public abstract class MetaBlottoAgent extends Agent{
 		setupResponder();
 		
 		addBehaviour(new BlottoSleeper(this, BlottoGlobals.SLEEP));
-
-		/*addBehaviour(new CyclicBehaviour() {
-
-			public void action() {
-				DFAgentDescription templ = new DFAgentDescription();
-				ServiceDescription sd = new ServiceDescription();
-				sd.setType("Blotto");
-				templ.addServices(sd);
-
-				try {
-					DFAgentDescription[] result = DFService.search(myAgent,
-							templ);
-					System.out.println(result.length);
-				} catch (FIPAException e) {
-
-				}
-			}
-		});*/
 	}
 	
 	public abstract ContentElementList getContents(ACLMessage message) throws FIPAException;
 	
 	public Vector<ACLMessage> prepareMessages(ACLMessage cfp) {
-		System.out.println("gotowanie wiadomosci");
 		Vector<ACLMessage> result = new Vector<>();
 		for (AID player : queryDF_Players()) {
 			if (player.equals(getAID()))
@@ -110,9 +85,7 @@ public abstract class MetaBlottoAgent extends Agent{
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void handleResponses(Vector responses, Vector acceptances) {
-		System.out.println("jest wejscie");
 		int index = 0;
-		System.out.println("wybrany nty proposal" + index);
 		for (int i = 0; i < responses.size(); i++) {
 			ACLMessage response = (ACLMessage)responses.get(i);
 			if (response.getPerformative() == ACLMessage.PROPOSE) {
@@ -121,21 +94,15 @@ public abstract class MetaBlottoAgent extends Agent{
 					if (i == index) {
 						msg.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
 						int units = this.assignUnits();
-						System.out.println("tyle unituw" + units);
 						ContentElementList cel = this.getContents(response);
-						System.out.println("ding");
 						cel.add(new BlottoUnits(units));
-						System.out.println("ding");
 						getContentManager().fillContent(msg, cel);
 						this.units -= units;
-						System.out.println("ding");
 					} else {
 						msg.setPerformative(ACLMessage.REJECT_PROPOSAL);
 						msg.setContent(response.getContent());
-						System.out.println("dung");
 					}
 					acceptances.add(msg);
-					System.out.println("taki rozmiar" + acceptances.size());
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}

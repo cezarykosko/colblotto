@@ -20,8 +20,6 @@ public class BlottoInitiator extends ContractNetInitiator {
 	protected Vector<ACLMessage> prepareCfps(ACLMessage cfp) {
 		Vector<ACLMessage> result = this.myAgent.prepareMessages(cfp);
 		
-		System.out.println("tyle wiadomosci: " + result.size());
-		
 		return result;
 	}
 	

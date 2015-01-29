@@ -93,18 +93,13 @@ public class BlottoAgent extends MetaBlottoAgent {
 			throw new FIPAException("nie dziala cos z onto");
 
 		try {
-			System.out.println("in");
 			ContentElement ce = getContentManager().extractContent(msg);
-			System.out.println("dalejin");
 			if (ce instanceof ContentElementList) {
-				System.out.println("ble1");
 				return (ContentElementList) ce;
 			} else {
-				System.out.println("ble2");
 
 				ContentElementList cel = new ContentElementList();
 				cel.add(ce);
-				System.out.println("ble3");
 				return cel;
 			}
 		} catch (Exception e) {

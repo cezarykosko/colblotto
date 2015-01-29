@@ -24,8 +24,6 @@ public class BlottoResponder extends ContractNetResponder {
 	protected ACLMessage handleCfp(ACLMessage cfp) {
 		myAgent.setupResponder();
 		
-		System.out.println("jest wiadomoszcz");
-		
 		ACLMessage reply = cfp.createReply();
 		
 		try {

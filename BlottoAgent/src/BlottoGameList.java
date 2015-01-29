@@ -25,6 +25,7 @@ public class BlottoGameList {
 			result.append(game.toString() + "\n");
 			pointSum += game.result;
 		}
+		result.append("combined result: ");
 		result.append(pointSum);
 		
 		return result.toString();
