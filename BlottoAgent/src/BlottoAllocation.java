@@ -1,6 +1,7 @@
 
 
-import java.util.ArrayList;
+import jade.util.leap.ArrayList;
+import jade.util.leap.List; 
 
 import jade.content.Concept;
 
@@ -8,17 +9,18 @@ public class BlottoAllocation implements Concept{
 	
 	private static final long serialVersionUID = -1046961840112579207L;
 
-	private ArrayList<?> assignment;
+	private List assignment;
 	
 	public BlottoAllocation() {
-		this.assignment = new ArrayList<Object>();
+		this.assignment = new ArrayList();
 	}
 	
-	public ArrayList<?> getAssignment() {
+	public List getAssignment() {
 		return this.assignment;
 	}
 	
-	public void setAssignment(ArrayList<?> assignment) {
+	public void setAssignment(List assignment) {
 		this.assignment = assignment;
 	}
 }
+

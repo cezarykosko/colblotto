@@ -120,7 +120,7 @@ public abstract class MetaBlottoAgent extends Agent{
 				try {
 					if (i == index) {
 						msg.setPerformative(ACLMessage.ACCEPT_PROPOSAL);
-						int units = 3;
+						int units = this.assignUnits();
 						System.out.println("tyle unituw" + units);
 						ContentElementList cel = this.getContents(response);
 						System.out.println("ding");
@@ -180,6 +180,7 @@ public abstract class MetaBlottoAgent extends Agent{
 			System.out.println("Could not deregister from DF: "
 					+ e.getMessage());
 		}
+		displayGameInfo();
 	}
 	
 	protected void displayGameInfo() {

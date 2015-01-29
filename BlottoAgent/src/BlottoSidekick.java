@@ -1,7 +1,8 @@
 
 
 
-import java.util.ArrayList;
+import jade.util.leap.ArrayList;
+import jade.util.leap.List;
 import java.util.Vector;
 
 import jade.content.ContentElement;
@@ -43,8 +44,8 @@ public class BlottoSidekick extends AchieveREInitiator{
 		return units;
 	}
 
-	private ArrayList<Integer> assignment(int units) {
-		ArrayList<Integer> result = new ArrayList<>();
+	private List assignment(int units) {
+		ArrayList result = new ArrayList();
 		
 		for (int i = 0; i < 4; i++) {
 			result.add(units/5);
@@ -100,3 +101,4 @@ public class BlottoSidekick extends AchieveREInitiator{
 		putReply(reply);
 	}
 }
+
