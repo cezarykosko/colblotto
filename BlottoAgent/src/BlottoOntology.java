@@ -14,7 +14,7 @@ public class BlottoOntology extends Ontology {
 	public static final String ONTOLOGY_NAME = "blotto-ontology";
 	
 	//predicates
-	public static final String UNITS = "commited-units";
+	public static final String UNITS = "committed-units";
 	public static final String UNITS_COUNT = "count";
 	
 	public static final String RESULT = "blotto-result";

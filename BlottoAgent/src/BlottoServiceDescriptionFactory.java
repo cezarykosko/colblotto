@@ -6,9 +6,9 @@ public class BlottoServiceDescriptionFactory {
 	public static ServiceDescription getBlottoDescription() {
 		ServiceDescription service = new ServiceDescription();
 		service.setType("Blotto");
-		service.addLanguages("fipa-sl");
+		/*service.addLanguages("fipa-sl");
 		service.addProtocols("fipa-contract-net");
-		service.addOntologies("blotto-ontology");
+		service.addOntologies("blotto-ontology");*/
 		return service;
 	}
 }

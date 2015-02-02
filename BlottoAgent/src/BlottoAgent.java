@@ -26,6 +26,10 @@ public class BlottoAgent extends MetaBlottoAgent {
 	protected void setupDF() {
 		DFAgentDescription dfd = new DFAgentDescription();
 
+		dfd.addLanguages(FIPANames.ContentLanguage.FIPA_SL);
+		dfd.addOntologies(BlottoOntology.ONTOLOGY_NAME);
+		dfd.addProtocols(FIPANames.InteractionProtocol.FIPA_CONTRACT_NET);
+
 		ServiceDescription service = BlottoServiceDescriptionFactory
 				.getBlottoDescription();
 		service.setName("Blotto:" + getName());
@@ -50,6 +54,10 @@ public class BlottoAgent extends MetaBlottoAgent {
 		ArrayList<AID> result = new ArrayList<>();
 		DFAgentDescription dfd = new DFAgentDescription();
 
+		dfd.addLanguages(FIPANames.ContentLanguage.FIPA_SL);
+		dfd.addOntologies(BlottoOntology.ONTOLOGY_NAME);
+		dfd.addProtocols(FIPANames.InteractionProtocol.FIPA_CONTRACT_NET);
+		
 		ServiceDescription service = BlottoServiceDescriptionFactory
 				.getBlottoDescription();
 
@@ -103,7 +111,7 @@ public class BlottoAgent extends MetaBlottoAgent {
 				return cel;
 			}
 		} catch (Exception e) {
-			throw new FIPAException(e.getMessage());
+			throw new FIPAException("wywala sie na ekstraktkontent");
 		}
 	}
 }
